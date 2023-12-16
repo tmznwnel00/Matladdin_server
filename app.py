@@ -3,6 +3,8 @@ from bson import json_util
 from datetime import datetime
 import os
 import uuid
+import requests
+from urllib.parse import urlencode
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
@@ -246,6 +248,23 @@ def get_matbti():
         "create_time": result["create_time"]
     }
     return jsonify(data)
+
+@app.route("/restuarant", methods=["GET"])
+def get_restuarant():
+    search = request.args.get("search")
+    headers = {
+            'X-Naver-Client-Id': os.getenv("CLIENT_ID"),
+            'X-Naver-Client-Secret': os.getenv("CLIENT_SECRET"),
+          }
+    query_params = {
+        'query' : search,
+        'display' : 3
+    }
+
+    response = requests.get('https://openapi.naver.com/v1/search/local.json', headers=headers, params=query_params)
+    res = response.json()
+    print(res)
+    return jsonify(res['items'])
 
 if __name__ == '__main__':
     app.run()
