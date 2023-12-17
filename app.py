@@ -89,6 +89,8 @@ def chat_completion():
         api_key=api_key,
         api_key_primary_val=api_key_primary_val,
     )
+    print(chatbot_dict)
+    print(request)
     current_messages = chatbot_dict[chat_id]
     user_answer = {"role": "user", "content": answer}
     current_messages.append(user_answer)
