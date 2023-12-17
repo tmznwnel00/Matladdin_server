@@ -268,4 +268,4 @@ def get_restuarant():
 
 if __name__ == '__main__':
     ssl_context = ('cert.pem', 'key.pem')
-    app.run(ssl_context=ssl_context, host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000, ssl_context=ssl_context)
