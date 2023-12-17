@@ -1,0 +1,9 @@
+flask
+requests
+pymongo[srv]
+Flask-PyMongo
+flask[async]
+python-dotenv
+flask-cors
+Flask[async]
+cryptography

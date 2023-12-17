@@ -267,5 +267,4 @@ def get_restuarant():
     return jsonify(res['items'])
 
 if __name__ == '__main__':
-    ssl_context = ('cert.pem', 'key.pem')
-    app.run(host='0.0.0.0', port=5000, ssl_context=ssl_context)
+    app.run(port=5000, ssl_context='adhoc')
