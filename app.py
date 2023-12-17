@@ -99,7 +99,7 @@ def chat_completion():
     current_messages.append(execution["result"]["message"])
     chatbot_dict[chat_id] = current_messages
         
-    if step == "10":
+    if step == "10" or "질문 : " not in execution["result"]["message"]["content"]:
         response = {
         "uuid": chat_id,
         "step": int(step) + 1,
